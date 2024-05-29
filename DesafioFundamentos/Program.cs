@@ -1,11 +1,12 @@
-﻿using DesafioFundamentos.Models;
+﻿using DesafioFundamentos.Controllers;
+using DesafioFundamentos.Models;
 
 // Coloca o encoding para UTF8 para exibir acentuação
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 decimal precoInicial = 0;
 decimal precoPorHora = 0;
-
+int quantidadeVagas = 0;
 Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
                   "Digite o preço inicial:");
 precoInicial = Convert.ToDecimal(Console.ReadLine());
@@ -14,7 +15,7 @@ Console.WriteLine("Agora digite o preço por hora:");
 precoPorHora = Convert.ToDecimal(Console.ReadLine());
 
 // Instancia a classe Estacionamento, já com os valores obtidos anteriormente
-Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
+EstacionamentoController ec = new EstacionamentoController(quantidadeVagas, (double)precoInicial, (double)precoPorHora);
 
 string opcao = string.Empty;
 bool exibirMenu = true;
@@ -22,25 +23,19 @@ bool exibirMenu = true;
 // Realiza o loop do menu
 while (exibirMenu)
 {
-    Console.Clear();
-    Console.WriteLine("Digite a sua opção:");
-    Console.WriteLine("1 - Cadastrar veículo");
-    Console.WriteLine("2 - Remover veículo");
-    Console.WriteLine("3 - Listar veículos");
-    Console.WriteLine("4 - Encerrar");
-
+    ec.ExibirMenuPrincipal();
     switch (Console.ReadLine())
     {
         case "1":
-            es.AdicionarVeiculo();
+            ec.AdicionarVeiculo();
             break;
 
         case "2":
-            es.RemoverVeiculo();
+            ec.RemoverVeiculo();
             break;
 
         case "3":
-            es.ListarVeiculos();
+            ec.ListarVeiculos();
             break;
 
         case "4":
