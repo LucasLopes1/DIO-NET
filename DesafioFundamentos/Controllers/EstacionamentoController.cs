@@ -9,7 +9,7 @@ namespace DesafioFundamentos.Controllers
 {
     public class EstacionamentoController
     {
-        private Estacionamento _estacionamento = null;
+        public Estacionamento _estacionamento = null;
         
         public EstacionamentoController(int quantidadeDeVagas, double precoInicial, double precoPorHora) 
         {
